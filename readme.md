@@ -1,0 +1,2 @@
+The game is played by 2 persons. One is the computer.
+Every round each player reveals s choice which he have made from a total of 3. Each choice has a grater or lesser effect to the other, except those that are the same.
