@@ -1,8 +1,9 @@
-let humanScore = 0
-let computerScore = 0
+let humanScore = 0;
+let computerScore = 0;
+let round = 0;
 
 // select nodes from the DOM tree
-// select display nodes - μπορώ να το φτιάξω με ένα queryselector?
+// select display nodes - μπορώ να το φτιάξω με ένα queryselector? οχι
 container.style.cssText = "color: blue; background: white;";
 let action = document.querySelector("#action");
 let results = document.querySelector("#results");
@@ -11,27 +12,12 @@ let score = document.querySelector("#score");
 // select buttons - μπορώ να το φτιάξω με ένα queryselector? ok!
 let menu = document.querySelector("#menu");
 
-menu.addEventListener("click", (event) => {
-  let target = event.target;
+// προσπαθεια για loop - eventlistener Μεσα στο for είναι ατερμονο και τα αθροισματα λαθος!!
+// while loop? δεν πετυχε κι αυτο...
 
-  switch (target.id) {
-    case 'rock':
-      playRound("Rock");
-      action.textContent = "Rock clicked.";
-      score.textContent = `The score is: You ${humanScore} to Comp ${computerScore}`;
-      break;
-    case 'paper':
-      playRound("Paper");
-      action.textContent = "Paper clicked.";
-      score.textContent = `The score is: You ${humanScore} to Comp ${computerScore}`;
-      break;
-    case 'scissors':
-      playRound("Scissors")
-      action.textContent = "Scissors clicked.";
-      score.textContent = `The score is: You ${humanScore} to Comp ${computerScore}`;
-      break;
-  }
-})
+menu.addEventListener("click", mouseClick)
+
+
 
 //-----------------------------------------------------------------------
 // let rock = document.querySelector("#rock");
@@ -133,5 +119,35 @@ function winner(you, computer) {
   }
   else {
     console.log('It\'s a tie.');
+  }
+}
+
+function mouseClick(event) {
+  let target = event.target;
+  round++;
+  console.log(round);
+
+  // checks round in the callback funcion of the event listener and removes the listener
+  if (round == 5) {
+    menu.removeEventListener("click", mouseClick);
+  }
+
+  // το for μεσα στο event listener πριν απο το swich - κι εδω είναι ατερμονο και τα αθροισματα λαθος!!
+  switch (target.id) {
+    case 'rock':
+      playRound("Rock");
+      action.textContent = "Rock clicked.";
+      score.textContent = `The score is: You ${humanScore} to Comp ${computerScore}`;
+      break;
+    case 'paper':
+      playRound("Paper");
+      action.textContent = "Paper clicked.";
+      score.textContent = `The score is: You ${humanScore} to Comp ${computerScore}`;
+      break;
+    case 'scissors':
+      playRound("Scissors")
+      action.textContent = "Scissors clicked.";
+      score.textContent = `The score is: You ${humanScore} to Comp ${computerScore}`;
+      break;
   }
 }
