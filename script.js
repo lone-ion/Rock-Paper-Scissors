@@ -3,47 +3,16 @@ let computerScore = 0;
 let round = 0;
 
 // select nodes from the DOM tree
-// select display nodes - μπορώ να το φτιάξω με ένα queryselector? οχι
 container.style.cssText = "color: blue; background: white;";
 let action = document.querySelector("#action");
 let results = document.querySelector("#results");
 let score = document.querySelector("#score");
 
-// select buttons - μπορώ να το φτιάξω με ένα queryselector? ok!
+// select buttons
 let menu = document.querySelector("#menu");
 
-// προσπαθεια για loop - eventlistener Μεσα στο for είναι ατερμονο και τα αθροισματα λαθος!!
-// while loop? δεν πετυχε κι αυτο...
-
+// add event listener to the parent node
 menu.addEventListener("click", mouseClick)
-
-
-
-//-----------------------------------------------------------------------
-// let rock = document.querySelector("#rock");
-// rock.addEventListener("click", () => {
-
-//   playRound("Rock");
-//   action.textContent = "Rock clicked.";
-//   score.textContent = `The score is: You ${humanScore} to Comp ${computerScore}`;
-// });
-
-// let paper = document.querySelector("#paper");
-// paper.addEventListener("click", () => {
-
-//   playRound("Paper");
-//   action.textContent = "Paper clicked.";
-//   score.textContent = `The score is: You ${humanScore} to Comp ${computerScore}`;
-// });
-
-// let scissors = document.querySelector("#scissors");
-// scissors.addEventListener("click", () => {
-
-//   playRound("Scissors")
-//   action.textContent = "Scissors clicked.";
-//   score.textContent = `The score is: You ${humanScore} to Comp ${computerScore}`;
-// });
-//-------------------------------------------------------------------------------------
 
 // συνάρτηση για ένα γύρο - μπορεί να γίνει re-factor?
 function playRound(humanChoice) {
@@ -125,14 +94,12 @@ function winner(you, computer) {
 function mouseClick(event) {
   let target = event.target;
   round++;
-  console.log(round);
 
   // checks round in the callback funcion of the event listener and removes the listener
   if (round == 5) {
     menu.removeEventListener("click", mouseClick);
   }
 
-  // το for μεσα στο event listener πριν απο το swich - κι εδω είναι ατερμονο και τα αθροισματα λαθος!!
   switch (target.id) {
     case 'rock':
       playRound("Rock");
