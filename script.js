@@ -94,12 +94,6 @@ function mouseClick(event) {
   let target = event.target;
   round++;
 
-  // checks round in the callback funcion of the event listener and removes the listener
-  if (round == 5) {
-    menu.removeEventListener("click", mouseClick);
-    winner(humanScore, computerScore);
-  }
-
   switch (target.id) {
     case 'rock':
       playRound("Rock");
@@ -117,4 +111,10 @@ function mouseClick(event) {
       score.textContent = `The score is: You ${humanScore} to Comp ${computerScore}`;
       break;
   }
+
+    // checks round in the callback function of the event listener and removes it
+    if (round  == 5) {
+      menu.removeEventListener("click", mouseClick);
+      return winner(humanScore, computerScore);
+    }
 }
