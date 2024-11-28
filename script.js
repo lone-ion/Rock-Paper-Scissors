@@ -7,6 +7,7 @@ container.style.cssText = "color: blue; background: white;";
 let action = document.querySelector("#action");
 let results = document.querySelector("#results");
 let score = document.querySelector("#score");
+let final = document.querySelector("#final");
 
 // select buttons
 let menu = document.querySelector("#menu");
@@ -14,7 +15,6 @@ let menu = document.querySelector("#menu");
 // add event listener to the parent node
 menu.addEventListener("click", mouseClick)
 
-// συνάρτηση για ένα γύρο - μπορεί να γίνει re-factor?
 function playRound(humanChoice) {
   let computerSelection = getComputerChoice();
 
@@ -59,7 +59,6 @@ function playRound(humanChoice) {
     }
   }
 }
-//------------------------------------------------------------------------------------------
 
 function getComputerChoice() {
   let choice = ""
@@ -81,13 +80,13 @@ function getComputerChoice() {
 
 function winner(you, computer) {
   if (you > computer) {
-    console.log("The winner is you!!!");
+    final.textContent = "The winner is you!!!";
   }
   else if (you < computer) {
-    console.log("You lost. It doesn't matter!");
+    final.textContent = "You lost. It doesn't matter!";
   }
   else {
-    console.log('It\'s a tie.');
+    final.textContent = 'It\'s a tie.';
   }
 }
 
@@ -98,6 +97,7 @@ function mouseClick(event) {
   // checks round in the callback funcion of the event listener and removes the listener
   if (round == 5) {
     menu.removeEventListener("click", mouseClick);
+    winner(humanScore, computerScore);
   }
 
   switch (target.id) {
