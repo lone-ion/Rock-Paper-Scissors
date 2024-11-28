@@ -2,13 +2,13 @@ let humanScore = 0
 let computerScore = 0
 
 // select nodes from the DOM tree
-// select display nodes
+// select display nodes - μπορώ να το φτιάξω με ένα queryselector?
 container.style.cssText = "color: blue; background: white;";
-let action = document.querySelector(".action");
-let results = document.querySelector(".results");
-let score = document.querySelector(".score");
+let action = document.querySelector("#action");
+let results = document.querySelector("#results");
+let score = document.querySelector("#score");
 
-// select buttons - μπορώ να το φτιάξω με ένα queryselector?
+// select buttons - μπορώ να το φτιάξω με ένα queryselector? ok!
 let menu = document.querySelector("#menu");
 
 menu.addEventListener("click", (event) => {
