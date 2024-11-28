@@ -1,11 +1,14 @@
   let humanScore = 0
   let computerScore = 0
 
+  // select nodes from the DOM tree
+  // select display nodes
   container.style.cssText = "color: blue; background: white;";
   let action = document.querySelector(".action");
   let results = document.querySelector(".results");
   let score = document.querySelector(".score");
 
+  // select buttons - μπορώ να το φτιάξω με ένα queryselector?
   let rock = document.querySelector("#rock");
   rock.addEventListener("click", () => {
     
@@ -29,7 +32,9 @@
     action.textContent = "Scissors clicked.";
     score.textContent = `The score is: You ${humanScore} to Comp ${computerScore}`;
   });
+//-------------------------------------------------------------------------------------
 
+// συνάρτηση για ένα γύρο - μπορεί να γίνει re-factor?
   function playRound(humanChoice) {
     let computerSelection = getComputerChoice();
   
@@ -74,6 +79,7 @@
       }
     }
   }
+  //------------------------------------------------------------------------------------------
 
   function getComputerChoice() {
     let choice = ""
